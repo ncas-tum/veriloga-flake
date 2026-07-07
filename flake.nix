@@ -30,7 +30,9 @@
           ]);
         in
         {
-          packages.default = vacask;
+          packages = {
+            inherit openvaf vampyre vacask;
+          };
           devShells.default = pkgs.mkShell {
             buildInputs = [
               openvaf
