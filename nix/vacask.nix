@@ -16,11 +16,11 @@
 
 stdenv.mkDerivation {
   pname = "vacask";
-  version = "0.3.2-unstable-2026-03-23";
+  version = "0.3.3";
   src = fetchgit {
     url = "https://codeberg.org/arpadbuermen/VACASK.git";
-    rev = "c85b9cbc03c98efed3268c4cb9da7e41fc21193c";
-    hash = "sha256-upa0KnxG3tX9hLRIwFlUqCzy03Hpe7Nd/hOrwG3JnkQ=";
+    rev = "8729bbf12145850c5697243d6c047b240d3a6e92";
+    hash = "sha256-eU3SuJPqxqc8QO5k4Jb/9zc8V2JQ1VP1bPEoJ6KCi/c=";
   };
   nativeBuildInputs = [
     cmake
@@ -49,6 +49,11 @@ stdenv.mkDerivation {
     mkdir -p $TMPDIR/include/suitesparse
     ln -s ${suitesparse.dev}/include/*.h $TMPDIR/include/suitesparse/
     export NIX_CFLAGS_COMPILE="$NIX_CFLAGS_COMPILE -I$TMPDIR/include"
+  '';
+
+  # Upstream has hardcoded static linking. Nix's boost does not support it.
+  postPatch = ''
+    substituteInPlace CMakeLists.txt --replace "set(Boost_USE_STATIC_LIBS ON)" ""
   '';
 
   meta = {
