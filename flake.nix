@@ -27,6 +27,7 @@
             ps.numpy
             ps.schemdraw
             ps.scipy
+	    ps.seaborn
           ]);
         in
         {
