@@ -25,9 +25,10 @@
           pyenv = pkgs.python3.withPackages (ps: [
             ps.matplotlib
             ps.numpy
+            ps.pandas
             ps.schemdraw
             ps.scipy
-	    ps.seaborn
+            ps.seaborn
           ]);
         in
         {
