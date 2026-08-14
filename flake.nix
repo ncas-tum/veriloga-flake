@@ -26,6 +26,7 @@
             ps.matplotlib
             ps.numpy
             ps.pandas
+            ps.pandas-stubs
             ps.schemdraw
             ps.scipy
             ps.seaborn
