@@ -17,7 +17,7 @@
       perSystem =
         { pkgs, ... }:
         let
-          openvaf = pkgs.callPackage nix/openvaf.nix { };
+          openvaf = pkgs.openvaf;
           vampyre = pkgs.callPackage nix/vampyre.nix { };
           vacask = pkgs.callPackage nix/vacask.nix {
             inherit openvaf;
