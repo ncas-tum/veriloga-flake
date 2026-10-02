@@ -17,11 +17,7 @@
       perSystem =
         { pkgs, ... }:
         let
-          openvaf = pkgs.openvaf;
           vampyre = pkgs.callPackage nix/vampyre.nix { };
-          vacask = pkgs.callPackage nix/vacask.nix {
-            inherit openvaf;
-          };
           pyenv = pkgs.python3.withPackages (ps: [
             ps.matplotlib
             ps.numpy
@@ -34,12 +30,12 @@
         in
         {
           packages = {
-            inherit openvaf vampyre vacask;
+            inherit vampyre;
           };
           devShells.default = pkgs.mkShell {
             buildInputs = [
-              openvaf
-              vacask
+              pkgs.openvaf
+              pkgs.vacask
               vampyre
               pyenv
               pkgs.xschem
