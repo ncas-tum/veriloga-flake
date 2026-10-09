@@ -34,10 +34,11 @@
           };
           devShells.default = pkgs.mkShell {
             buildInputs = [
+              pyenv
+              vampyre
+              pkgs.ngspice
               pkgs.openvaf
               pkgs.vacask
-              vampyre
-              pyenv
               pkgs.xschem
             ];
           };
